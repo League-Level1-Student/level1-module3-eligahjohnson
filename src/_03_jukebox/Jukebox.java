@@ -25,17 +25,22 @@ public class Jukebox implements Runnable {
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
+    	Song clubbeats = new Song ("Daft Punk - One More Time [HQ].mp3");
 		// 2. Create a Song object for that mp3
 
 		// 3. Play the Song
-
+        clubbeats.play();
 		/*
 		 * 4. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
 		 * each song, or a picture of the album cover. When the button or album
 		 * cover is clicked, stop the currently playing song, and play the one
 		 * that was selected.
+		 * 
 		 */
+        JFrame bane = new JFrame ();
+         eligah.setVisble (true);
+        
     }
     
     
