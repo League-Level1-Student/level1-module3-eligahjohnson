@@ -5,6 +5,8 @@ package _03_jukebox;
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -12,7 +14,10 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import javazoom.jl.player.advanced.AdvancedPlayer;
@@ -20,16 +25,22 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /*   If you don't have javazoom.jar in your project, you can download it from here: http://bit.ly/javazoom
  *   Right click your project and add it as a JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
+public class Jukebox implements Runnable,ActionListener {
 
+	   JButton josuke = new JButton (" JoJo Bizzare adventure - dimand is Unbreakable ");
+       JButton Giorno = new JButton ("Jojo Bizzare adventure - Goldenwind");
+       JButton Jotaro = new JButton ("JoJo Bizzare adventure - Stardust Crusaders  ");
+          
+        Song Diu = new Song ("JoJo Bizzare adventure - dimand is Unbreakable .mp3");
+    	Song Goldenwind = new Song ("Jojo Bizzare adventure - Goldenwind.mp3");
+    	Song SC = new Song ("JoJo Bizzare adventure - Stardust Crusaders .mp3");
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
-    	Song clubbeats = new Song ("Daft Punk - One More Time [HQ].mp3");
 		// 2. Create a Song object for that mp3
-
+    	
 		// 3. Play the Song
-        clubbeats.play();
+         
 		/*
 		 * 4. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -38,9 +49,25 @@ public class Jukebox implements Runnable {
 		 * that was selected.
 		 * 
 		 */
-        JFrame bane = new JFrame ();
-         eligah.setVisble (true);
-        
+        JFrame Dio = new JFrame ("JoJoBox");
+         Dio.setVisible(true); 
+         Dio.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+         
+         JPanel kars= new JPanel ();
+         
+          
+          
+          josuke.addActionListener(this);
+          Giorno.addActionListener(this);
+          Jotaro.addActionListener(this);
+          
+          Dio.add (kars);
+          kars.add(josuke);
+          kars.add(Giorno);
+          kars.add(Jotaro);
+          
+          Dio.pack();
+          
     }
     
     
@@ -49,6 +76,22 @@ public class Jukebox implements Runnable {
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		if(josuke== e.getSource()) {
+			Diu.play();
+			
+		}
+		if(Giorno== e.getSource()) {
+			Goldenwind.play();
+		}
+		 if(Jotaro== e.getSource()) {
+			 SC.play();
+		 }
 	}
 
 }
